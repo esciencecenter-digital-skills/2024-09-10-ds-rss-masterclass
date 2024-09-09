@@ -420,70 +420,8 @@ please preview your site before committing, and make sure to run
 {% endcomment %}
 
 <h2 id="setup">Setup</h2>
-
 <p>
-  To participate in
-  {% if info.carpentry == "swc" %}
-  a Software Carpentry
-  {% elsif info.carpentry == "dc" %}
-  a Data Carpentry
-  {% elsif info.carpentry == "lc" %}
-  a Library Carpentry
-  {% else %}
-  this
-  {% endif %}
-  workshop,
-  you will need access to software as described below.
-  In addition, you will need an up-to-date web browser.
-</p>
-<p>
-  We maintain a list of common issues that occur during installation as a reference for instructors
-  that may be useful on the
-  <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
+  To participate in this workshop all you need is a laptop (do not forget your charger!) and access to the internet.
 </p>
 
-{% comment %}
-These are the installation instructions for the tools used
-during the workshop.
-{% endcomment %}
-
-<h3 id="software-setup">Software setup</h3>
-
-{% if info.carpentry == "swc" %}
-{% include swc/setup.html %}
-{% elsif info.carpentry == "dc" %}
-{% include dc/setup.html %}
-{% elsif info.carpentry == "lc" %}
-{% include lc/setup.html %}
-{% elsif info.carpentry == "ds" %}
-{% capture content %}
-{% remote_include {{lesson_meta}}/setup.md %}
-{% endcapture %}
-{% if content contains "/setup.md" %}
-  {% capture setup %}
-  {% remote_include https://raw.githubusercontent.com/{{content | strip}} %}
-  {% endcapture %}
-  {{ setup | split: "---" | last}}
-{% else %}
-  {{ content }}
-{% endif %}
-{% elsif info.carpentry == "pilot" %}
-Please check the "Setup" page of
-[the lesson site]({{ site.lesson_site }}) for instructions to follow
-to obtain the software and data you will need to follow the lesson.
-{% endif %}
-
-{% comment %}
-For online workshops, the section below provides:
-- installation instructions for the Zoom client
-- recommendations for setting up Learners' workspace so they can follow along
-  the instructions and the videoconferencing
-
-If you do not use Zoom for your online workshop, edit the file
-`_includes/install_instructions/videoconferencing.html`
-to include the relevant installation instrucctions.
-{% endcomment %}
-{% if online != "false" %}
-{% include install_instructions/videoconferencing.html %}
-{% endif %}
 
